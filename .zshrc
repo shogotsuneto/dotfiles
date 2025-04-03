@@ -1,4 +1,6 @@
 # .zshrc
+autoload -U add-zsh-hook
+
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # User specific aliases and functions
@@ -13,7 +15,20 @@ function last_exit_code {
     echo $?
 }
 
+function nvmrc_use {
+    if [ -f .nvmrc ]; then
+        nvm use
+    else
+        if [ "$(nvm version current)" != "$(nvm version default)" ]; then
+            nvm use default
+        fi
+    fi
+}
+
 PROMPT='%F{cyan}%n%f %~ %F{green}`parse_git_branch`%f
 $ '
 RPROMPT='`last_exit_code`'
 setopt prompt_subst #表示毎にPROMPTで設定されている文字列を評価する
+
+add-zsh-hook chpwd nvmrc_use
+nvmrc_use
