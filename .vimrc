@@ -42,7 +42,6 @@ set hlsearch
 set cursorcolumn
 set wildmenu wildmode=list:longest
 set clipboard=unnamed
-set directory=~/.vim ""set swapfiles directory
 set number
 set ruler
 set showmatch
