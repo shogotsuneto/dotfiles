@@ -24,3 +24,22 @@ function parse_git_branch {
 }
 export PS1='\[\e[1;32m\]\u@\h \[\033[0;33m\]\w\[\033[1;36m\]$(parse_git_branch)\[\033[0m\]\n$ '
 
+function nvmrc_use {
+    if [[ $PWD == $PREV_PWD ]]; then
+        return
+    fi
+
+    # directory changed
+    PREV_PWD=$PWD
+    nvmrc_use
+
+    if [ -f .nvmrc ]; then
+        nvm use
+    # else
+    #     if [ "$(nvm version current)" != "$(nvm version default)" ]; then
+    #         nvm use default
+    #     fi
+    fi
+}
+
+export PROMPT_COMMAND="nvmrc_use${PROMPT_COMMAND:+;$PROMPT_COMMAND}"

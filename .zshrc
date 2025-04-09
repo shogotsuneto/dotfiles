@@ -18,10 +18,11 @@ function last_exit_code {
 function nvmrc_use {
     if [ -f .nvmrc ]; then
         nvm use
-    else
-        if [ "$(nvm version current)" != "$(nvm version default)" ]; then
-            nvm use default
-        fi
+    # else
+    # commented out because didn't want to switch back to default if its child dir
+    #     if [ "$(nvm version current)" != "$(nvm version default)" ]; then
+    #         nvm use default
+    #     fi
     fi
 }
 
