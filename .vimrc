@@ -4,12 +4,12 @@
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,iso-2022-jp,sjis
 set nocompatible
-syntax on
+" syntax on
 
 filetype plugin on
 runtime macros/matchit.vim
 
-colorscheme desert
+"colorscheme desert
 hi Normal ctermbg=NONE
 hi Pmenu ctermbg=5
 "hi PmenuSel ctermbg=1
@@ -24,9 +24,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-commentary'
-call plug#end()
+"call plug#begin('~/.vim/plugged')
+"Plug 'tpope/vim-commentary'
+"call plug#end()
 " PlugInstall
 
 "-----------------------------------------------------------
