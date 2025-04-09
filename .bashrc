@@ -1,8 +1,18 @@
 # .bashrc
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+if [ -f ~/.bash_aliases ]; then
+    # for user-specific aliases and functions
+    . ~/.bash_aliases
+fi
+
+if [ -f ~/.bash_paths ]; then
+    . ~/.bash_paths
 fi
 
 # User specific aliases and functions
